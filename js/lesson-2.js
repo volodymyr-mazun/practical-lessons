@@ -78,7 +78,7 @@
 // function findSmallestNumber(numbers) {
 //     if (!Array.isArray(numbers)) {
 //         return 'Sorry, it is not an array!'
-//     } 
+//     }
 //     if (numbers.length === 0) {
 //         return 'Array is empty!';
 //     }
@@ -92,13 +92,23 @@
 // }
 // console.log(findSmallestNumber(numbers));
 //=======================================================================================
-// Напишіть функцію findLongestWord(string), яка 
+// Напишіть функцію findLongestWord(string), яка
 // приймає довільний рядок, що складається лише зі слів, розділених
 // пробілами (параметр string), і повертатиме найдовше слово у реченні.
-
 // Скористайтесь цим прикладом виклику функції для перевірки її роботи:
 // console.log(findLongestWord("London is the capital of Great Britain")); // 'capital'
 
+// function findLongestWord(string) {
+//     const words = string.split(' ');
+//     let longestWord = '';
+//     for (let word of words) {
+//         if (word.length > longestWord.length) {
+//             longestWord = word;
+//         }
+//     }
+//     return longestWord;
+// }
+// console.log(findLongestWord("London is the capital of Great Britain"));
 //=======================================================================================
 // Напишіть скрипт, який для об'єкту user, послідовно:
 // 1 - додасть поле mood зі значенням 'happy',
@@ -112,8 +122,13 @@
 //     age: 20,
 //     hobby: "tenis",
 //     premium: true,
-//   };
-
+//     };
+// user.mood = 'happy';
+// user.hobby = 'skydiving';
+// user.premium = false;
+// for (const key of Object.keys(user)) {
+//     console.log(`${key}:${user[key]}`);
+// }
 //=======================================================================================
 // Є об'єкт, в якому зберігаються зарплати команди
 // Напишіть код для додавання усіх зарплат та
@@ -125,24 +140,59 @@
 //     Poly: 160,
 //     Ajax: 1470,
 //   };
-
+// let sum = 0;
+// for (const salary of Object.values(salaries)) {
+//     sum += salary;
+// }
+// console.log(sum);
 //=======================================================================================
 // Створіть об'єкт calculator з наступними методами:
 // read(a, b) - приймає два аргумента і зберігає їх як властивості об'єкта,
 // sum() - повертає сумму збереженних значень (з перевіркою на наявність властивостей в об'єкті),
 // mult() - перемножає збереженні значення і повертає результат (з перевіркою на наявність властивостей в об'єкті),
 // винесіть перевірку на наявність властивостей в об'єкті в окремий метод exist().
-
 // Якщо вказані властивості в обʼєкті відсутні (тобто метод exist повертає false),
 // методи sum і mult мають повертати рядок 'No such propeties'
 
+// const calculator = {
+//   a: null,
+//   b: null,
+  
+//   read(a, b) {
+//     this.a = a;
+//     this.b = b;
+//   },
+
+//   exist() {
+//     return this.a !== null && this.b !== null;
+//   },
+
+//   sum() {
+//     if (!this.exist()) {
+//       return 'No such properties';
+//     }
+//     return this.a + this.b;
+//   },
+
+//   mult() {
+//     if (!this.exist()) {
+//       return 'No such properties';
+//     }
+//     return this.a * this.b;
+//   }
+// };
+// calculator.read(5, 10);
+// console.log(calculator.sum());
+// console.log(calculator.mult());
+// const calc2 = Object.create(calculator);
+// console.log(calc2.sum());
+// console.log(calc2.mult());
 //=======================================================================================
 // Напишіть функцію calcTotalPrice(fruits, fruitName),
 // яка приймає массив об'єктів (fruits) і рядок з назвою фрукта (fruitName).
 // Функція рахує і повертає загальну вартість фрукта
 // з таким ім'ям, ціною та кількістю з об'єкта.
-
-// Зверніть увагу, що в масиві може бути кілька обʼєктів з однаковою 
+// Зверніть увагу, що в масиві може бути кілька обʼєктів з однаковою
 // назвою фрукта, це також треба урахувати.
 
 // const fruits = [
@@ -153,3 +203,14 @@
 //     { name: "Виноград", price: 440, quantity: 3 },
 //     { name: "Банан", price: 125, quantity: 3 },
 //   ];
+// function calcTotalPrice(fruits, fruitName) {
+//     let total = 0;
+//     for (const fruit of fruits) {
+//         if (fruit.name === fruitName) {
+//            total += fruit.price * fruit.quantity;
+//             }
+//         }
+//     return total;
+// }
+// console.log(calcTotalPrice(fruits, "Банан"));
+//=======================================================================================
